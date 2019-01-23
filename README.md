@@ -3,10 +3,25 @@ Example .Net Core 2 with AWS Lambda
 
 ## Deploy with AWS Cli
 ### Profile (list profile)
-`$ cd profile/src/profile`
+**Run Unit Test**
+```
+$ cd profile/test/profile.Test
+$ dotnet test
+```
 
-`$ dotnet lambda deploy-function profile –-function-role MyRole`
+**Try to Run and Get result**
+```
+$ cd profile/src/profile
+$ aws lambda invoke --function-name {LAMBDA_FUNCTION_NAME} output.txt
+```
 
+**Deploy**
+```
+$ dotnet lambda deploy-function {LAMBDA_FUNCTION_NAME} –-function-role {ROLE_NAME}
+```
+
+
+**IF DEPLOY AT FIRST TIME, AND CREATE NEW LAMBDA FUCNTION ON AWS**
 1. enter role name `MyRole` (create Role in AWS Account)
 2. enter handler `profile::profile.Function::Get`
 3. enter memory `128`
