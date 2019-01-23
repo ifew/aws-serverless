@@ -29,4 +29,4 @@ $ dotnet lambda deploy-function {LAMBDA_FUNCTION_NAME} –-function-role {ROLE_N
 5. go to Lambda Function, and enter Environment variables such as
 - key: TEST_LAMBDA_DBCONNECTION 
 - value: server={HOST};userid={USERNAME};password={PASSWORD};database={DATABASE_NAME};convert zero datetime=True;
-6. Config Security group, vpn, subnet on Labmda Function for access on RDS
+6. Config Role Permission, Security group, vpn, subnet on Labmda Function for access on RDS
