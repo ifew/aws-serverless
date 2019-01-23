@@ -1,27 +1,57 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
+using Amazon.Lambda.APIGatewayEvents;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
-// Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
 namespace get_profile
 {
     public class Function
     {
-        
+        private ServiceProvider _service;
+
+        public Function()
+            : this (Bootstrap.CreateInstance()) {}
+
         /// <summary>
-        /// A simple function that takes a string and does a ToUpper
+        /// Default constructor that Lambda will invoke.
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        public string FunctionHandler(string input, ILambdaContext context)
+        public Function(ServiceProvider service)
         {
-            return input?.ToUpper();
+            _service = service;
+        }
+
+        /// <summary>
+        /// List profile
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>The list of profile</returns>
+        public APIGatewayProxyResponse Get(APIGatewayProxyRequest request, ILambdaContext context)
+        {
+            string profileID = null;
+            if (request.PathParameters != null && request.PathParameters.ContainsKey("id"))
+                profileID = request.PathParameters["id"];
+
+            if (!String.IsNullOrEmpty(profileID))
+            {
+
+                var profileService = _service.GetService<ProfileService>();
+                var response = profileService.GetProfile(profileID);
+
+                return response;
+            }
+
+            return new APIGatewayProxyResponse
+            {
+                StatusCode = (int)HttpStatusCode.NotFound
+            };
         }
     }
 }
