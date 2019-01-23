@@ -21,6 +21,25 @@ namespace profile.Tests
         {
         }
 
+        //[Fact]
+        public void IntegrationTestGetMethod()
+        {
+            string expected = "[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]";
+            
+            TestLambdaContext context;
+            APIGatewayProxyRequest request;
+            APIGatewayProxyResponse response;
+
+            Function functions = new Function();
+
+            request = new APIGatewayProxyRequest();
+            context = new TestLambdaContext();
+            response = functions.Get(request, context);
+
+            Assert.Equal(200, response.StatusCode);
+            Assert.Equal(expected, response.Body);
+        }
+
         [Fact]
         public void TestGetMethod()
         {
