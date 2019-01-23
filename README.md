@@ -1,7 +1,12 @@
 # aws-serverless
 Example .Net Core 2 with AWS Lambda
 
-## Deploy with AWS Cli
+## API List
+- /profile
+- /get_profile/id
+
+
+## Example Deploy with AWS Cli
 ### Profile (list profile)
 **Run Unit Test**
 ```
