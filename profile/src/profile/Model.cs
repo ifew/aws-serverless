@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace profile
+namespace list_profile
 {
     [Table("profiles")]
     public class ProfileModel {

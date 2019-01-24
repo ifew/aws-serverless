@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace profile
+namespace list_profile
 {
     public class Bootstrap
     {

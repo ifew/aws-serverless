@@ -8,12 +8,12 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 using Amazon.Lambda.APIGatewayEvents;
 
-using profile;
+using list_profile;
 using Newtonsoft.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
-namespace profile.Tests
+namespace list_profile.Tests
 {
     public class FunctionTest
     {

@@ -1,7 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace profile
+namespace list_profile
 {
     public class FunctionContext : DbContext
     {

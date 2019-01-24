@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
-namespace profile
+namespace list_profile
 {
     public class Function
     {

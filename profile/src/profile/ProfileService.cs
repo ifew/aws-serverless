@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Amazon.Lambda.APIGatewayEvents;
 using System.Net;
 
-namespace profile
+namespace list_profile
 {
     public class ProfileService
     {
