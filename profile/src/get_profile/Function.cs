@@ -29,7 +29,7 @@ namespace get_profile
         }
 
         /// <summary>
-        /// List profile
+        /// Get profile by id
         /// </summary>
         /// <param name="request"></param>
         /// <returns>The list of profile</returns>
