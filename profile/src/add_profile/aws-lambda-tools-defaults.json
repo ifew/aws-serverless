@@ -13,5 +13,5 @@
   "function-runtime":"dotnetcore2.1",
   "function-memory-size" : 128,
   "function-timeout" : 30,
-  "function-handler" : "add_profile::add_profile.Function::Get"
+  "function-handler" : "add_profile::add_profile.Function::Post"
 }
