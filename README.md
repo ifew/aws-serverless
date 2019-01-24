@@ -1,22 +1,23 @@
 # aws-serverless
 Example .Net Core 2 with AWS Lambda
 
-## API List
-- /profile
-- /get_profile/id
+## API => Mapping in AWS API Gateway
+- /list_profile => GET /
+- /add_profile => POST /
+- /get_profile/id => GET /{id}
 
 
 ## Example Deploy with AWS Cli
 ### Profile (list profile)
 **Run Unit Test**
 ```
-$ cd profile/test/profile.Test
+$ cd profile/test/list_profile.Test
 $ dotnet test
 ```
 
 **Try to Run and Get result**
 ```
-$ cd profile/src/profile
+$ cd profile/src/list_profile
 $ aws lambda invoke --function-name {LAMBDA_FUNCTION_NAME} output.txt
 ```
 
@@ -28,7 +29,7 @@ $ dotnet lambda deploy-function {LAMBDA_FUNCTION_NAME} –-function-role {ROLE_N
 
 **IF DEPLOY AT FIRST TIME, AND CREATE NEW LAMBDA FUCNTION ON AWS**
 1. enter role name `MyRole` (create Role in AWS Account)
-2. enter handler `profile::profile.Function::Get`
+2. enter handler `list_profile::list_profile.Function::Get`
 3. enter memory `128`
 4. enter timeout `3`
 5. go to Lambda Function, and enter Environment variables such as
