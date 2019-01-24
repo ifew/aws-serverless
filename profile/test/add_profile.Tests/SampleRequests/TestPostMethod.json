@@ -4,9 +4,7 @@
   "httpMethod": "Post",
   "headers": null,
   "queryStringParameters": null,
-  "pathParameters": {
-    "id": "1"
-  },
+  "pathParameters": null,
   "stageVariables": null,
   "requestContext": {
     "accountId": "AAAAAAAAAAAA",
@@ -30,5 +28,5 @@
     "httpMethod": "Post",
     "apiId": "t2yh6sjnmk"
   },
-  "body": null
+  "body": "{\"name\" : \"iFew\",\"about_us\" : \"Hello World!\"}"
 }

@@ -8,6 +8,7 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.APIGatewayEvents;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
@@ -33,8 +34,9 @@ namespace add_profile
         /// </summary>
         /// <param name="request"></param>
         /// <returns>The list of profile</returns>
-        public APIGatewayProxyResponse Post(ProfileModel profileInput, ILambdaContext context)
+        public APIGatewayProxyResponse Post(APIGatewayProxyRequest request, ILambdaContext context)
         {
+            ProfileModel profileInput = JsonConvert.DeserializeObject<ProfileModel>(request.Body);
             if (!String.IsNullOrEmpty(profileInput.name))
             {
 

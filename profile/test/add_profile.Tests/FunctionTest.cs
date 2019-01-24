@@ -43,46 +43,33 @@ namespace add_profile.Tests
         //     Assert.Equal(expected, response.Body);
         // }
 
-        // [Fact]
-        // public void TestGetMethod()
-        // {
-        //     string expected = "{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"}";
-        //     var requestString = File.ReadAllText("./SampleRequests/TestGetMethod.json");
+        [Fact]
+        public void TestGetMethod()
+        {
+            var requestString = File.ReadAllText("./SampleRequests/TestPostMethod.json");
 
-        //     TestLambdaContext context;
-        //     APIGatewayProxyRequest request;
-        //     APIGatewayProxyResponse response;
+            TestLambdaContext context;
+            APIGatewayProxyRequest request;
+            APIGatewayProxyResponse response;
 
-        //     var provider = new ServiceCollection()
-        //     .AddDbContext<FunctionContext>(options => options.UseInMemoryDatabase("profile"))
-        //     .AddSingleton<ProfileService, ProfileService>()
-        //     .BuildServiceProvider();
+            var provider = new ServiceCollection()
+            .AddDbContext<FunctionContext>(options => options.UseInMemoryDatabase("profile"))
+            .AddSingleton<ProfileService, ProfileService>()
+            .BuildServiceProvider();
 
-        //     FunctionContext db_context = provider.GetRequiredService<FunctionContext>();
-        //     db_context.Profiles.Add(new ProfileModel { 
-        //             id = 1,
-        //             name = "iFew",
-        //             about_us = "Hello World!",
-        //             add_datetime = DateTime.Parse("2019-01-16 11:59:59")
-        //         });
-                
-        //     db_context.Profiles.Add(new ProfileModel { 
-        //             id = 2,
-        //             name = "Chitpong",
-        //             about_us = "My Name is Chitpong",
-        //             add_datetime = DateTime.Parse("2019-01-16 12:00:00")
-        //         });
-        //     db_context.SaveChanges();
+            Function functions = new Function(provider);
 
-        //     Function functions = new Function(provider);
+            request = JsonConvert.DeserializeObject<APIGatewayProxyRequest>(requestString);
+            context = new TestLambdaContext();
+            response = functions.Post(request, context);
 
-        //     request = JsonConvert.DeserializeObject<APIGatewayProxyRequest>(requestString);
-        //     context = new TestLambdaContext();
-        //     response = functions.Get(request, context);
+            var response_data = JsonConvert.DeserializeObject<ProfileModel>(response.Body);
 
-        //     Assert.Equal(200, response.StatusCode);
-        //     Assert.Equal(expected, response.Body);
-        // }
+            Assert.Equal(200, response.StatusCode);
+            Assert.Equal("1", response_data.id.ToString());
+            Assert.Equal("iFew", response_data.name);
+            Assert.Equal("Hello World!", response_data.about_us);
+        }
 
         [Fact]
         public void TestService()
