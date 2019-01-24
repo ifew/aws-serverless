@@ -24,24 +24,27 @@ namespace add_profile.Tests
         }
 
         //[Fact]
-        // public void IntegrationTestGetMethod()
-        // {
-        //     string expected = "{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"}";
-        //     var requestString = File.ReadAllText("./SampleRequests/TestGetMethod.json");
+        public void IntegrationTestGetMethod()
+        {
+            var requestString = File.ReadAllText("./SampleRequests/TestPostMethod.json");
 
-        //     TestLambdaContext context;
-        //     APIGatewayProxyRequest request;
-        //     APIGatewayProxyResponse response;
+            TestLambdaContext context;
+            APIGatewayProxyRequest request;
+            APIGatewayProxyResponse response;
 
-        //     Function functions = new Function();
+            Function functions = new Function();
             
-        //     request = JsonConvert.DeserializeObject<APIGatewayProxyRequest>(requestString);
-        //     context = new TestLambdaContext();
-        //     response = functions.Get(request, context);
+            request = JsonConvert.DeserializeObject<APIGatewayProxyRequest>(requestString);
+            context = new TestLambdaContext();
+            response = functions.Post(request, context);
 
-        //     Assert.Equal(200, response.StatusCode);
-        //     Assert.Equal(expected, response.Body);
-        // }
+            var response_data = JsonConvert.DeserializeObject<ProfileModel>(response.Body);
+
+            Assert.Equal(200, response.StatusCode);
+            Assert.Equal("999", response_data.id.ToString());
+            Assert.Equal("iFew", response_data.name);
+            Assert.Equal("Hello World!", response_data.about_us);
+        }
 
         [Fact]
         public void TestGetMethod()
@@ -66,7 +69,7 @@ namespace add_profile.Tests
             var response_data = JsonConvert.DeserializeObject<ProfileModel>(response.Body);
 
             Assert.Equal(200, response.StatusCode);
-            Assert.Equal("1", response_data.id.ToString());
+            Assert.Equal("999", response_data.id.ToString());
             Assert.Equal("iFew", response_data.name);
             Assert.Equal("Hello World!", response_data.about_us);
         }
@@ -80,7 +83,7 @@ namespace add_profile.Tests
             ProfileService service = new ProfileService(db_context);
 
             var data = new ProfileModel { 
-                id = 1,
+                id = 999,
                 name = "iFew",
                 about_us = "Hello World!"
             };
@@ -90,7 +93,7 @@ namespace add_profile.Tests
             var response_data = JsonConvert.DeserializeObject<ProfileModel>(response.Body);
             
             Assert.Equal(200, response.StatusCode);
-            Assert.Equal("1", response_data.id.ToString());
+            Assert.Equal("999", response_data.id.ToString());
             Assert.Equal("iFew", response_data.name);
             Assert.Equal("Hello World!", response_data.about_us);
         }

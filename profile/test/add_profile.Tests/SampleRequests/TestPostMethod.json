@@ -28,5 +28,5 @@
     "httpMethod": "Post",
     "apiId": "t2yh6sjnmk"
   },
-  "body": "{\"name\" : \"iFew\",\"about_us\" : \"Hello World!\"}"
+  "body": "{\"id\" : \"999\",\"name\" : \"iFew\",\"about_us\" : \"Hello World!\"}"
 }
