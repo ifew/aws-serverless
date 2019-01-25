@@ -1,0 +1,17 @@
+﻿{
+  "Information" : [
+    "Delete profile"
+  ],
+
+	"profile":"default",
+	"region" : "ap-southeast-1",
+  "configuration": "Release",
+  "framework": "netcoreapp2.1",
+  "s3-prefix": "profile/",
+  "template": "serverless.template",
+  "template-parameters": "",
+  "function-runtime":"dotnetcore2.1",
+  "function-memory-size" : 128,
+  "function-timeout" : 30,
+  "function-handler" : "delete_profile::delete_profile.Function::Delete"
+}
