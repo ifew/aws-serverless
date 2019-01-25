@@ -38,3 +38,10 @@ $ dotnet lambda deploy-function {LAMBDA_FUNCTION_NAME} –-function-role {ROLE_N
 - key: TEST_LAMBDA_DBCONNECTION 
 - value: server={HOST};userid={USERNAME};password={PASSWORD};database={DATABASE_NAME};convert zero datetime=True;
 6. Config Role Permission, Security group, vpn, subnet on Labmda Function for access on RDS
+
+## Run Test Newman
+
+```
+$ cd profile/test/
+newman run AWS-Lambda-Test_Profile.postman_collection.json -e AWSGateway-Dev-Profile.postman_environment.json
+```
