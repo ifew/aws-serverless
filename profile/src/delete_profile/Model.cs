@@ -10,4 +10,8 @@ namespace delete_profile
         public string about_us { get; set; }
         public DateTime add_datetime { get; set; }
     }
+
+    public class RespondModel {
+        public string result { get; set;}
+    }
 }

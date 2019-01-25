@@ -20,9 +20,15 @@ namespace delete_profile
 
         public APIGatewayProxyResponse DeleteProfile(string profile_id)
         {
-            var profile = new ProfileModel { id = Int32.Parse(profile_id) };
-            _context_db.Profiles.Remove(profile);
-            var result = _context_db.SaveChanges();
+            _context_db.Remove(_context_db.Profiles.Single(a => a.id == Int32.Parse(profile_id)));
+            var save_result = _context_db.SaveChanges();
+
+            var result = new RespondModel {
+                result = "true"
+            };
+            if(save_result < 1) {
+                result.result = "false";
+            }
 
             APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
                 StatusCode = (int)HttpStatusCode.OK,

@@ -37,11 +37,12 @@ namespace delete_profile
         public APIGatewayProxyResponse Delete(APIGatewayProxyRequest request, ILambdaContext context)
         {
             ProfileModel profileInput = JsonConvert.DeserializeObject<ProfileModel>(request.Body);
-            if (!String.IsNullOrEmpty(profileInput.name))
+            string id = profileInput.id.ToString();
+            if (!String.IsNullOrEmpty(id))
             {
 
                 var profileService = _service.GetService<ProfileService>();
-                var response = profileService.DeleteProfile(profileInput.id.ToString());
+                var response = profileService.DeleteProfile(id);
 
                 return response;
             }
