@@ -8,7 +8,7 @@
     "Get" : {
       "Type" : "AWS::Serverless::Function",
       "Properties": {
-        "Handler": "profile::profile.Functions::Get",
+        "Handler": "list_profile::list_profile.Functions::Get",
         "Runtime": "dotnetcore2.1",
         "CodeUri": "",
         "MemorySize": 256,
