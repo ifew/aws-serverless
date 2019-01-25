@@ -3,8 +3,10 @@ Example .Net Core 2 with AWS Lambda
 
 ## API => Mapping in AWS API Gateway
 - /list_profile => GET /
-- /add_profile => POST /
 - /get_profile/id => GET /{id}
+- /add_profile => POST /
+- /update_profile => PUT /
+- /delete_profile => DELETE /
 
 
 ## Example Deploy with AWS Cli
