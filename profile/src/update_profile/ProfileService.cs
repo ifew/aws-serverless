@@ -20,8 +20,8 @@ namespace update_profile
 
         public APIGatewayProxyResponse UpdateProfile(ProfileModel data)
         {
-            data.add_datetime = DateTime.Now;
-            _context_db.Entry(data).State = EntityState.Modified;
+              var current_data=  _context_db.Profiles.FirstOrDefault(p => p.id == data.id);
+            _context_db.Entry(current_data).CurrentValues.SetValues(data);
             _context_db.SaveChanges();
 
             APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
