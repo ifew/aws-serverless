@@ -36,7 +36,7 @@ $ dotnet lambda deploy-function {LAMBDA_FUNCTION_NAME} –-function-role {ROLE_N
 4. enter timeout `3`
 5. go to Lambda Function, and enter Environment variables such as
 - key: TEST_LAMBDA_DBCONNECTION 
-- value: server={HOST};userid={USERNAME};password={PASSWORD};database={DATABASE_NAME};convert zero datetime=True;
+- value: server={HOST};userid={USERNAME};password={PASSWORD};database={DATABASE_NAME};convert zero datetime=True; CharSet=utf8;
 6. Config Role Permission, Security group, vpn, subnet on Labmda Function for access on RDS
 
 ## Run Test Newman
