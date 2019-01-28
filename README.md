@@ -45,3 +45,8 @@ $ dotnet lambda deploy-function {LAMBDA_FUNCTION_NAME} –-function-role {ROLE_N
 $ cd profile/test/
 newman run AWS-Lambda-Test_Profile.postman_collection.json -e AWSGateway-Dev-Profile.postman_environment.json
 ```
+
+## Create Container UI
+```
+docker run -p 81:80 -v /{YOUT_PATH}/ui:/usr/share/nginx/html --name aws-serverless-ui aws-serverless-ui
+```
