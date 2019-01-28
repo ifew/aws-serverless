@@ -35,6 +35,7 @@ namespace list_profile
         /// <returns>The list of profile</returns>
         public APIGatewayProxyResponse Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
+            System.Console.WriteLine(request);
             var profileService = _service.GetService<ProfileService>();
             var response = profileService.ListProfile();
 
