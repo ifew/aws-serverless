@@ -5,7 +5,7 @@ $(document).ready(function () {
         async: true,
         type: 'GET',
         crossDomain: true,
-        contentType: 'application/json; charset=utf-8',
+        cache: false,
         error: function(msg) {         
             alert(JSON.stringify(msg));
             console.log("error");
