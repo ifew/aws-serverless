@@ -1,0 +1,9 @@
+.disply_none{
+  display: none;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  border: 1px solid #eee;
+  padding: 10px;
+}
