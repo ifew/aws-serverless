@@ -172,10 +172,15 @@
       var dataContainer = $('#data-container');
       $('#pagination-container').pagination({
         dataSource: GET_API,
-        locator: 'items',
-        totalNumber: 120,
-        pageSize: 3,
-        async: true,
+        locator: 'Profiles',
+        totalNumberLocator: function(response) {
+          return response.totalItem;
+        },
+        pageSize: 5,
+        alias: {
+          pageNumber: 'page',
+          pageSize: 'limit'
+        },
         ajax: {
           beforeSend: function() {
             $('#loading').removeClass('disply_none');
