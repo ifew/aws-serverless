@@ -37,7 +37,7 @@ namespace list_profile
                 page = request.QueryStringParameters["pageNumber"];
             }
 
-            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("pageSize") == false) {
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("pageSize")) {
                 limit = request.QueryStringParameters["pageSize"];
             }
 
