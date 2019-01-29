@@ -13,11 +13,7 @@ namespace list_profile
         public DateTime add_datetime { get; set; }
     }
 
-    public class PagingAPIGatewayProxyResponse : APIGatewayProxyResponse {
-        public Paging Paging { get; set; }
-    }
-
-    public class Paging
+    public class ListProfileModel
     {
         public int totalItem { get; set; }
         public int perPage { get; set; }
@@ -32,5 +28,7 @@ namespace list_profile
         {
             get { return Math.Min(currentPage * perPage, totalItem); }
         }
+
+        public List<ProfileModel> Profiles { get; set; } 
     }
 }

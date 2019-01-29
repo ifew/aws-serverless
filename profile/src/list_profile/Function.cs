@@ -33,7 +33,7 @@ namespace list_profile
         /// </summary>
         /// <param name="request"></param>
         /// <returns>The list of profile</returns>
-        public async Task<PagingAPIGatewayProxyResponse> Get(APIGatewayProxyRequest request, ILambdaContext context)
+        public async Task<APIGatewayProxyResponse> Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
             System.Console.WriteLine(request);
             var profileService = _service.GetService<ProfileService>();

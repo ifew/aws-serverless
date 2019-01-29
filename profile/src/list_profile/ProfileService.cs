@@ -18,31 +18,32 @@ namespace list_profile
             _context_db = context_db;
         }
 
-        public async Task<PagingAPIGatewayProxyResponse> ListProfileAsync()
+        public async Task<APIGatewayProxyResponse> ListProfileAsync()
         {
             decimal perPage = 5;
             int currentPage = 1;
             int skip = (currentPage - 1) * (int)perPage;
 
-            List<ProfileModel> data = await _context_db.Profiles.Skip(skip).Take((int)perPage).ToListAsync();
+            List<ProfileModel> data_list = await _context_db.Profiles.Skip(skip).Take((int)perPage).ToListAsync();
             decimal totalData = await _context_db.Profiles.CountAsync();
             int totalPageNumber = (int)Math.Ceiling(totalData / perPage);
- 
 
-            PagingAPIGatewayProxyResponse respond = new PagingAPIGatewayProxyResponse {
+            ListProfileModel result = new ListProfileModel {
+                totalItem = (int)totalData,
+                perPage = (int)perPage,
+                totalPageNumber = totalPageNumber,
+                currentPage = currentPage,
+                Profiles = data_list
+            };
+
+            APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
                 StatusCode = (int)HttpStatusCode.OK,
                 Headers = new Dictionary<string, string>
                 { 
                     { "Content-Type", "application/json" }, 
                     { "Access-Control-Allow-Origin", "*" } 
                 },
-                Body = JsonConvert.SerializeObject(data),
-                Paging = new Paging {
-                    totalItem = (int)totalData,
-                    perPage = (int)perPage,
-                    totalPageNumber = totalPageNumber,
-                    currentPage = currentPage
-                }
+                Body = JsonConvert.SerializeObject(result)
             };
 
             return respond;
