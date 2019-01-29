@@ -17,10 +17,10 @@ namespace list_profile
             _context_db = context_db;
         }
 
-        public async Task<APIGatewayProxyResponse> ListProfileAsync()
+        public async Task<APIGatewayProxyResponse> ListProfileAsync(FilterRequestModel filter)
         {
-            decimal perPage = 5;
-            int currentPage = 1;
+            decimal perPage = Decimal.Parse(filter.Limit);
+            int currentPage = Int32.Parse(filter.Page);
             int skip = (currentPage - 1) * (int)perPage;
 
             List<ProfileModel> data_list = await _context_db.Profiles.Skip(skip).Take((int)perPage).ToListAsync();

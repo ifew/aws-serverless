@@ -30,9 +30,24 @@ namespace list_profile
         /// <returns>The list of profile</returns>
         public async Task<APIGatewayProxyResponse> Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            System.Console.WriteLine(request);
+            string page = "1";
+            string limit = "5";
+            
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("pageNumber")) {
+                page = request.QueryStringParameters["pageNumber"];
+            }
+
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("pageSize") == false) {
+                limit = request.QueryStringParameters["pageSize"];
+            }
+
+            FilterRequestModel filter = new FilterRequestModel {
+                Page = page,
+                Limit = limit
+            };
+            
             var profileService = _service.GetService<ProfileService>();
-            var response = await profileService.ListProfileAsync();
+            var response = await profileService.ListProfileAsync(filter);
 
             return response;
         }

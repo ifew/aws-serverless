@@ -12,6 +12,15 @@ namespace list_profile
         public DateTime add_datetime { get; set; }
     }
 
+    public class FilterRequestModel
+    {
+        public string Page { get; set; }
+        public string Limit { get; set; }
+        public string Sort { get; set; }
+        public string SortBy { get; set; }
+        public string Keyword { get; set; }
+    }
+
     public class ListProfileModel
     {
         public int totalItem { get; set; }
