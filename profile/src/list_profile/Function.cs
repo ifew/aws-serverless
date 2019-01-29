@@ -33,12 +33,12 @@ namespace list_profile
             string page = "1";
             string limit = "5";
             
-            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("pageNumber")) {
-                page = request.QueryStringParameters["pageNumber"];
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("page")) {
+                page = request.QueryStringParameters["page"];
             }
 
-            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("pageSize")) {
-                limit = request.QueryStringParameters["pageSize"];
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("limit")) {
+                limit = request.QueryStringParameters["limit"];
             }
 
             FilterRequestModel filter = new FilterRequestModel {
