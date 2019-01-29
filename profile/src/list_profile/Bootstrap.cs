@@ -10,7 +10,7 @@ namespace list_profile
         {
             return new ServiceCollection()
             .AddDbContext<FunctionContext>(options => options.UseMySQL(LambdaConfiguration.Instance["TEST_LAMBDA_DBCONNECTION"]))
-            .AddSingleton<ProfileService, ProfileService>()
+            .AddTransient<ProfileService, ProfileService>()
             .BuildServiceProvider();
         }
     }
