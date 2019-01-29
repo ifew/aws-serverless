@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Amazon.Lambda.APIGatewayEvents;
 
 namespace list_profile
 {
