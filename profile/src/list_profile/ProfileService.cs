@@ -23,7 +23,7 @@ namespace list_profile
             int currentPage = Int32.Parse(filter.Page);
             int skip = (currentPage - 1) * (int)perPage;
 
-            List<ProfileModel> data_list = await _context_db.Profiles.Skip(skip).Take((int)perPage).ToListAsync();
+            List<ProfileModel> data_list = await _context_db.Profiles.AsNoTracking().Skip(skip).Take((int)perPage).ToListAsync();
             decimal totalData = await _context_db.Profiles.CountAsync();
             int totalPageNumber = (int)Math.Ceiling(totalData / perPage);
 
