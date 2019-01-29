@@ -34,7 +34,7 @@ namespace list_profile.Tests
 
             request = new APIGatewayProxyRequest();
             context = new TestLambdaContext();
-            response = await functions.GetAsync(request, context);
+            response = await functions.Get(request, context);
 
             Assert.Equal(200, response.StatusCode);
             Assert.Equal(expected, response.Body);
@@ -75,7 +75,7 @@ namespace list_profile.Tests
 
             request = new APIGatewayProxyRequest();
             context = new TestLambdaContext();
-            response = await functions.GetAsync(request, context);
+            response = await functions.Get(request, context);
 
             Assert.Equal(200, response.StatusCode);
             Assert.Equal(expected, response.Body);
