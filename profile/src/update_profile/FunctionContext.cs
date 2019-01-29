@@ -1,4 +1,3 @@
-using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace update_profile

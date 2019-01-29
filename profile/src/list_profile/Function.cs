@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
 using Amazon.Lambda.APIGatewayEvents;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
@@ -33,11 +28,26 @@ namespace list_profile
         /// </summary>
         /// <param name="request"></param>
         /// <returns>The list of profile</returns>
-        public APIGatewayProxyResponse Get(APIGatewayProxyRequest request, ILambdaContext context)
+        public async Task<APIGatewayProxyResponse> Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            System.Console.WriteLine(request);
+            string page = "1";
+            string limit = "5";
+            
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("page")) {
+                page = request.QueryStringParameters["page"];
+            }
+
+            if(request.QueryStringParameters != null && request.QueryStringParameters.ContainsKey("limit")) {
+                limit = request.QueryStringParameters["limit"];
+            }
+
+            FilterRequestModel filter = new FilterRequestModel {
+                Page = page,
+                Limit = limit
+            };
+            
             var profileService = _service.GetService<ProfileService>();
-            var response = profileService.ListProfile();
+            var response = await profileService.ListProfileAsync(filter);
 
             return response;
         }
