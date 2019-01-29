@@ -11,7 +11,7 @@
   "template": "serverless.template",
   "template-parameters": "",
   "function-runtime":"dotnetcore2.1",
-  "function-memory-size" : 128,
+  "function-memory-size" : 256,
   "function-timeout" : 180,
   "function-handler" : "delete_profile::delete_profile.Function::Delete"
 }
