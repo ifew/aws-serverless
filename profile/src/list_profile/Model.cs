@@ -23,6 +23,7 @@ namespace list_profile
 
     public class ListProfileModel
     {
+        public string version { get; set; }
         public int totalItem { get; set; }
         public int perPage { get; set; }
         public int totalPageNumber { get; set; }

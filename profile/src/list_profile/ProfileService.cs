@@ -28,6 +28,7 @@ namespace list_profile
             int totalPageNumber = (int)Math.Ceiling(totalData / perPage);
 
             ListProfileModel result = new ListProfileModel {
+                version = "2.0",
                 totalItem = (int)totalData,
                 perPage = (int)perPage,
                 totalPageNumber = totalPageNumber,
