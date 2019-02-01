@@ -27,7 +27,7 @@ namespace list_profile
         /// List profile
         /// </summary>
         /// <param name="request"></param>
-        /// <returns>The list of profile</returns>
+        /// <returns>The list of profiles</returns>
         public async Task<APIGatewayProxyResponse> Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
             string page = "1";
