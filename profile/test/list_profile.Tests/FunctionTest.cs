@@ -18,7 +18,7 @@ namespace list_profile.Tests
         //[Fact]
         public async void IntegrationTestGetMethod()
         {
-            string expected = "{\"totalItem\":2,\"perPage\":5,\"totalPageNumber\":1,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":2,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
+            string expected = "{\"version\":\"2.0\",\"totalItem\":2,\"perPage\":5,\"totalPageNumber\":1,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":2,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
             
             TestLambdaContext context;
             APIGatewayProxyRequest request;
@@ -40,7 +40,7 @@ namespace list_profile.Tests
         [Fact]
         public async void TestGetMethod()
         {
-            string expected = "{\"totalItem\":2,\"perPage\":5,\"totalPageNumber\":1,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":2,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
+            string expected = "{\"version\":\"2.0\",\"totalItem\":2,\"perPage\":5,\"totalPageNumber\":1,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":2,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
             
             TestLambdaContext context;
             APIGatewayProxyRequest request;
@@ -83,7 +83,7 @@ namespace list_profile.Tests
         [Fact]
         public async void TestServiceAsync()
         {
-            string expected = "{\"totalItem\":2,\"perPage\":5,\"totalPageNumber\":1,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":2,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
+            string expected = "{\"version\":\"2.0\",\"totalItem\":2,\"perPage\":5,\"totalPageNumber\":1,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":2,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
             FilterRequestModel querystring = new FilterRequestModel {
                 Limit = "5",
                 Page = "1"
@@ -120,7 +120,7 @@ namespace list_profile.Tests
         [Fact]
         public async void When_Have_6Profiles_But_Display_5PerPage_Should_Be_Display_5Profiles()
         {
-            string expected = "{\"totalItem\":6,\"perPage\":5,\"totalPageNumber\":2,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":5,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"},{\"id\":3,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"},{\"id\":4,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"},{\"id\":5,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
+            string expected = "{\"version\":\"2.0\",\"totalItem\":6,\"perPage\":5,\"totalPageNumber\":2,\"currentPage\":1,\"FirstRowOnPage\":1,\"LastRowOnPage\":5,\"Profiles\":[{\"id\":1,\"name\":\"iFew\",\"about_us\":\"Hello World!\",\"add_datetime\":\"2019-01-16T11:59:59\"},{\"id\":2,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"},{\"id\":3,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"},{\"id\":4,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"},{\"id\":5,\"name\":\"Chitpong\",\"about_us\":\"My Name is Chitpong\",\"add_datetime\":\"2019-01-16T12:00:00\"}]}";
             FilterRequestModel querystring = new FilterRequestModel {
                 Limit = "5",
                 Page = "1"
