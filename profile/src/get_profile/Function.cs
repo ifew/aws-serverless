@@ -32,14 +32,19 @@ namespace get_profile
         public APIGatewayProxyResponse Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
             string profileID = null;
+            string langID = null;
             if (request.PathParameters != null && request.PathParameters.ContainsKey("id"))
                 profileID = request.PathParameters["id"];
+
+            
+            if (request.PathParameters != null && request.PathParameters.ContainsKey("lang"))
+                langID = request.PathParameters["lang"];
 
             if (!String.IsNullOrEmpty(profileID))
             {
 
                 var profileService = _service.GetService<ProfileService>();
-                var response = profileService.GetProfile(profileID);
+                var response = profileService.GetProfile(profileID, langID);
 
                 return response;
             }

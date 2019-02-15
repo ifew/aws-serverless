@@ -15,9 +15,10 @@ namespace get_profile
             _context_db = context_db;
         }
 
-        public APIGatewayProxyResponse GetProfile(string id)
+        public APIGatewayProxyResponse GetProfile(string id, string lang = "th")
         {
             ProfileModel data = _context_db.Profiles.Where(p => p.id == Int32.Parse(id)).SingleOrDefault();
+            data.lang = lang;
 
             APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
                 StatusCode = (int)HttpStatusCode.OK,
