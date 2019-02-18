@@ -1,0 +1,1 @@
+dotnet lambda deploy-function [LAMBDA-FUINTION-NAME] -fl [ARN-LAMBDA-FUNCTION] -frole [AWS-ROLE] -ev "\"[KEY-EV-NAME]\"=\"server=[SERVERNAME];userid=[USERNAME];password=[PASSWORD];database=DBNAME;convert zero datetime=True;  CharSet=utf8;\""
